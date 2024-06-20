@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FDG - Lily and James Project</title>
+        <script src="./p5/p5.js"></script>
+        <script src="./js/graph.js"></script>
+        <script src="./js/sketch.js"></script>
+        <link rel="stylesheet" href="./css/main.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <h1>A Glimpse into the <span>Wonderful World</span> of Force-Directed Graphs</h1>
+            <h2>for Lily, from James</h2>
+            <p>We begin with a graph:</p>
+            $$
+                G = \{\{a,b,c,d,e,f,g\},\{ab, ac, ad, bf, eg\}\}
+            $$
+            <p>Each vertex, \(v\) in \(V(G)\), can be drawn on a plane. Let \(p(v)\) be the position of the vertex. At the start, the position of each vertex will be random.</p>
+            <p><b>Our goal</b> is to have adjacent vertices attract each other and non-adjacent vertices repel each other. That way the vertices will naturally spread out into a pleasing aesthetic shape.</p>
+
+            <p>To do this we need some ideal length, \(l\).</p>
+
+            <p>What we shall do is set up a counter, \(t\), and for every step such that \(t \lt K, K \in \mathbb{N}\), the vertices will attract and repel each other as appropriate.</p>
+
+            <ul>
+                <li>\(t \leftarrow 0\)</li>
+                <li><b>WHILE</b> \(t \lt K\):
+                    <ul>
+                        <li>\(F_{a}(v) \leftarrow \sum\limits_{w \in \Gamma(v)} 2\ln\left(\frac{||p(v) - p(w)||}{l}\right)\overrightarrow{p(w)p(v)}\)</li>
+                        <li>\(F_{r}(v) \leftarrow \sum\limits_{w \in V(G)\setminus\Gamma(v)} \left(\frac{l}{||p(v) - p(w)||^{2}}\right)\overrightarrow{p(v)p(w)}\)</li>
+                        <li>\(p(v) \leftarrow p(v) + \alpha(F_{a}(v) + F_{r}(v)), \forall v \in V(G)\)</li>
+                        <li>\(t \leftarrow t + 1\)</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Where \(F_{a}(v)\) is the attractive force, \(F_{r}(v)\) is the repelling force, and \(\alpha\) is some cooling constant, usually around 0.1</p>
+
+            <p>Here we see this algorithm in action. <i>You can hit refresh on the browser and watch it settle again if you like.</i></p>
+            <div class="main" id="sk1"></div>
+        </div>
+        
+    </body>
+</html>

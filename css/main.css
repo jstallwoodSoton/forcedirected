@@ -1,0 +1,44 @@
+:root {
+    --c1: #826aed;
+    --c2: #c879ff;
+    --c3: #ffb7ff;
+    --c4: #3bf4fb;
+    --c5: #caff8a;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--c1);
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 5vmin;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main p {
+    align-self: flex-start;
+    font-size: large;
+}
+
+.main li {
+    padding-top: 1vmin;
+    padding-bottom: 1vmin;
+}
+
+span {
+    color: var(--c2);
+}
